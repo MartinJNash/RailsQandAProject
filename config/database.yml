@@ -1,0 +1,25 @@
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: qanda_development
+  pool: 5
+  username:
+  password:
+
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: qanda_test
+  pool: 5
+  username:
+  password:
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: qanda_production
+  pool: 5
+  username:
+  password:
