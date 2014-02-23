@@ -1,19 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+  
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
-
+    <title><%= content_for?(:title) ? yield(:title) : "Q and A" %></title>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
+    <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <p><%= notice %></p>
 
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
+  <% if user_signed_in? %>
+    <h1>Signed in</h1>
+    <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+  <% else %>
+    <h1>Not signed in</h1>
+    <%= link_to "Sign in", new_user_session_path %>
+  <% end %>
+
+  <body>
+    <div class="row">
+      <div class="columns small-12">
+        <%= yield %>    
+      </div>
+    </div>
   </body>
+
 </html>

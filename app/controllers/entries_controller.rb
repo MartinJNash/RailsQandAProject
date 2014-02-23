@@ -1,5 +1,20 @@
 class EntriesController < ApplicationController
   before_action :set_entry, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+
+  after_action :create_entry, only: :create
+  after_action :update_entry, only: :update
+
+
+  def create_entry
+    Edit.create(user: current_user, entry: @entry, category: "Create")
+  end
+
+  def update_entry
+    Edit.create(user: current_user, entry: @entry, category: "Update")
+  end
+
+
 
   # GET /entries
   # GET /entries.json
